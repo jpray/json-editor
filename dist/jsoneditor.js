@@ -6113,8 +6113,8 @@ JSONEditor.defaults.editors.arraySelectize = JSONEditor.AbstractEditor.extend({
 
 JSONEditor.defaults.editors.media = JSONEditor.AbstractEditor.extend({
   setValue: function(value,initial) {
-    this.value = !!value;
-    this.input.checked = this.value;
+    this.value = value;
+    this.input.value = this.value;
     this.onChange();
   },
   register: function() {
@@ -6155,8 +6155,8 @@ JSONEditor.defaults.editors.media = JSONEditor.AbstractEditor.extend({
     this.input.addEventListener('change',function(e) {
       e.preventDefault();
       e.stopPropagation();
-      self.value = this.checked;
-      self.onChange(true);
+      self.value = this.value;
+      self.onChange(self.value);
     });
 
     this.container.appendChild(this.control);
